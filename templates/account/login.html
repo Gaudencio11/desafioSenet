@@ -1,38 +1,24 @@
+{%extends 'account/account_base.html'%}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrar</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/login.css">
-</head>
 
-<body>
-    <section class="first-section">
-    </section>
+{%block head_title%}Login{%endblock%}
+
+
+{%block body%}
     
-    <section class="second-section">
+    
+    <section class="second-section mt-5">
         <div class="container">
-            <div class="logo-container">
-                <img src="/static/images/original.png" alt="Logo">
-            </div>
-
+            
             <form method="POST">
                 {% csrf_token %}
-                <h3>SAPIENS</h3>
+                <h3>Login Numismática</h3>
                 <div class="input-container">
-                   <!-- <input type="email" id="email" name="email" placeholder="Email">  -->
                     {{ form }}
-                    <!--<input type="password" id="password" name="password" placeholder="Senha"> -->
-                    <p>
-                        <a href="{% url 'account_reset_password' %}" class="forgot-password">Esqueceu a senha?</a>
-                    </p>
+                    
                 </div>
-                <button type="submit">Entrar</button>
+                <button type="submit" class='btn btn-primary mt-4'>Entrar</button>
             </form>
 
             <p class="footer">
@@ -41,5 +27,5 @@
             </p>
         </div>
     </section>
-</body>
-</html>
+{%endblock%}
+

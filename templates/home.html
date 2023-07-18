@@ -5,18 +5,41 @@
 
 {%block body%}
 
-{% for coin in coinList %}
+<div class="container">
+    <div class="row">
+        <div class="card-group">
+        {% for coin in coinList %}
+
+            <div class="card col-sm-4 " style="width: 25%;">
+                {% if coin.image %}
+                    <img class="card-img-top " src="/media/{{coin.image}}" alt="">
+                {% else %}
+                    <img class="card-img-top " src="{% static '../static/images/moeda.png' %}" alt="">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{coin.title}}</h5>
+                    <p class="card-text">{{coin.price}}</p>
+                    <a href="{% url 'detailCoinPost' coin.id %}" class="btn btn-primary">detalhes</a>
+                </div>
+            </div>
     
-    <a href="{% url 'detailCoinPost' coin.id %}"><li>{{coin.title}}</li></a>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% comment %} 
+
+<a href="{% url 'detailCoinPost' coin.id %}"><li>{{coin.title}}</li></a>
     <li>{{coin.user.username}}</li>
     <li>{{coin.description}}</li>
-    <li>{{coin.price}}</li>
-{% endfor %}
 
 
 
-
-{% comment %} {% load account %}
-{% user_display user %} {% endcomment %}
+{% load account %}
+{% user_display user %} 
+{% endcomment %}
 
 {%endblock%}

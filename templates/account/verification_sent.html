@@ -1,18 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>A verificação foi enviada</h1>
-    <Ul title="O QUE TER AQUI">
-        <li> BOTÃO VOLTAR MENU</li>
-        <LI>BOTÃO SE CADASTRAR</LI>
-        <li>MENSAGEM COM O CONTATO DA COORDENAÇÃO CASO EMAIL NÃO ENVIADO</li>
-        <li>MENSAGEM INFORMANDO PARA CONFERIR EMAIL</li>
-    </Ul>
-</body>
-</html>
+
+{%extends 'account/account_base.html'%}
+{% load static %}
+
+
+{%block head_title%}Confirmação Enviada{%endblock%}
+
+
+{%block body%}
+    
+    
+    <section class="second-section mt-5">
+        <div class="container">
+            <h1>A verificação foi enviada!</h1>
+            <p>Por se tratar de um ambiente de testes o link de verificação se encontra
+                no cmd do servidor (pc ou via docker), <strong>basta copiar o link fornecido e 
+                seguir as instruções</strong>
+            </p>
+
+            <p class="footer">
+                <a href="{% url 'account_login' %}" class="footer-text">Já possui uma conta? <span class="yellow-color"> Faça login</span>
+                </a>
+            </p>
+        </div>
+    </section>
+{%endblock%}

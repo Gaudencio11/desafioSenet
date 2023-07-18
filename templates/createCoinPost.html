@@ -4,23 +4,26 @@
 {%block head_title%}Criar Postagem{%endblock%}
 
 {%block body%}
+<button type="button " class="btn btn-danger " >
+    <a href="{% url 'home'%}" style="text-decoration: none; color: white;">< Voltar Home</a>
+</button>
 
+<div class="mt-4">
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="image">Imagem: </label>
-        {{form.image}} </br>
-        <label for="Title">Titulo: </label>
-        {{form.title}} </br>
-        <label for="description">Descrição: </label>
-        {{form.description}}
-        <label for="description">Preço: </label>
-        {{form.price}}
-    </div>
-    <button type="submit" class="btn btn-primary" >Salvar</button>
-    <button type="button" class="btn btn-primary" >voltar</button>
-
-</form>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="image">Imagem: </label>
+            {{form.image}} </br>
+            <label for="Title">Titulo: </label>
+            {{form.title}} </br>
+            <label for="description">Descrição: </label>
+            {{form.description}}</br>
+            <label for="description">Preço: </label>
+            {{form.price}}
+        </div>
+        <button type="submit" class="btn btn-primary" >Salvar</button>
+    </form>
+</div>
 
 {%endblock%}

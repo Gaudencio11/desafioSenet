@@ -5,13 +5,11 @@
 <link rel="stylesheet" type="text/css" href="{% static '/css/editarPerfil.css' %}">
 {%endblock%}
 
-{% block perfilName %}
-    {{request.user.username}}
-{%endblock%}
-
 
 {%block body%}
-
+<button type="button " class="btn btn-danger " >
+  <a href="{% url 'home'%}" style="text-decoration: none; color: white;">< Voltar Home</a>
+</button>
 <div class="container mt-20">
     <div class="row">
         

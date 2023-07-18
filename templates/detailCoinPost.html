@@ -1,19 +1,44 @@
 {%extends 'base.html'%}
 {%load static%}
 
+{%block style%}
+<link rel="stylesheet" type="text/css" href="{% static '/css/detailCoin.css' %}">
+{%endblock%}
+
 {%block head_title%}Detalhes Moeda{%endblock%}
 
 {%block body%}
 
-    {% if coin.image %}
-        <img class="imagem_perfil " src="/media/{{coin.image}}" alt="">
-    {% else %}
-        <img class="imagem_perfil " src="{% static '../static/images/moeda.png' %}" alt="">
-    {% endif %}
-    <li>{{coin.title}}</li>
-    <li>{{coin.user.username}}</li>
-    <li>{{coin.description}}</li>
-    <li>{{coin.price}}</li>
+    <button type="button " class="btn btn-danger " >
+        <a href="{% url 'home'%}" style="text-decoration: none; color: white;">< Voltar Home</a>
+    </button>
+
+    <div class="container mt-20">
+        <div class="row">
+            
+            <div class="esquerda col-sm-6 d-flex align-items-center flex-column">
+                {% if coin.image %}
+                    <img class="imagem_coin" src="/media/{{coin.image}}" alt="">
+                {% else %}
+                    <img class="imagem_coin" src="{% static '../static/images/moeda.png' %}" alt="">
+                {% endif %}
+                <br>
+                <button type="button" class="btn btn-primary ">
+                    Comprar Moeda
+                </button>
+            </div>
+            <div class="direita col-sm-6">
+                <h3>{{coin.title}}</h3>
+                <p><strong>{{coin.user.username}}</strong></p>
+                
+                <p>{{coin.description}}</p>
+                
+                <br>
+                <p><strong>R$: </strong>{{coin.price}} </p> 
+    
+            </div>
+        </div>
+    </div>
 
 
 {%endblock%}

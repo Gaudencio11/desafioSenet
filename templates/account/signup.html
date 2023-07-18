@@ -1,39 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/signup.css">
-</head>
+{%extends 'account/account_base.html'%}
+{% load static %}
 
-<body>
-    <section class="first-section">
-    </section>
 
-    <section class="second-section">
+{%block head_title%}Cadastro{%endblock%}
+
+
+{%block body%}
+    
+    
+    <section class="second-section mt-5">
         <div class="container">
-            <div class="logo-container">
-                <img src="/static/images/original.png" alt="Logo">
-            </div>
 
             <form method="POST">
-                <h3>Cadastro</h3>
+                <h3>Cadastro Numismática</h3>
                 <div class="input-container">
                     {% csrf_token %}
-                    {{ form }}
-                    
-                    <div class="checkbox-container">
-
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                        <label for="checkbox">Li e concordo com os <span class="blue-color"> Termos de Uso e Política de Privacidade.</span></label>
-                    </div>
+                    {{ form.as_p }}
                 </div>
 
-                <button type="submit">Cadastrar</button>
+                <button type="submit" class='btn btn-primary'>Cadastrar</button>
             </form>
 
             <p class="footer">
@@ -42,7 +28,4 @@
             </p>
         </div>
     </section>
-
-</body>
-
-</html>
+{%endblock%}
