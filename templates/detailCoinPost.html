@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block head_title%}Detalhes Moeda{%endblock%}
+
+{%block body%}
+
+    {% if coin.image %}
+        <img class="imagem_perfil " src="/media/{{coin.image}}" alt="">
+    {% else %}
+        <img class="imagem_perfil " src="{% static '../static/images/moeda.png' %}" alt="">
+    {% endif %}
+    <li>{{coin.title}}</li>
+    <li>{{coin.user.username}}</li>
+    <li>{{coin.description}}</li>
+    <li>{{coin.price}}</li>
+
+
+{%endblock%}

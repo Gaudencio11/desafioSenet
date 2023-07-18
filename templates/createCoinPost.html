@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block head_title%}Criar Postagem{%endblock%}
+
+{%block body%}
+
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="image">Imagem: </label>
+        {{form.image}} </br>
+        <label for="Title">Titulo: </label>
+        {{form.title}} </br>
+        <label for="description">Descrição: </label>
+        {{form.description}}
+        <label for="description">Preço: </label>
+        {{form.price}}
+    </div>
+    <button type="submit" class="btn btn-primary" >Salvar</button>
+    <button type="button" class="btn btn-primary" >voltar</button>
+
+</form>
+
+{%endblock%}

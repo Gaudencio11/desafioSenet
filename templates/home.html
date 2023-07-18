@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block head_title%}Home{%endblock%}
+
+{%block body%}
+
+{% for coin in coinList %}
+    
+    <a href="{% url 'detailCoinPost' coin.id %}"><li>{{coin.title}}</li></a>
+    <li>{{coin.user.username}}</li>
+    <li>{{coin.description}}</li>
+    <li>{{coin.price}}</li>
+{% endfor %}
+
+
+
+
+{% comment %} {% load account %}
+{% user_display user %} {% endcomment %}
+
+{%endblock%}

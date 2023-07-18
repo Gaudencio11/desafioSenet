@@ -1,0 +1,121 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block style%}
+<link rel="stylesheet" type="text/css" href="{% static '/css/editarPerfil.css' %}">
+{%endblock%}
+
+{% block perfilName %}
+    {{request.user.username}}
+{%endblock%}
+
+
+{%block body%}
+
+<div class="container mt-20">
+    <div class="row">
+        
+        <div class="esquerda col-sm-6 d-flex align-items-center flex-column">
+            {% if image %}
+                <img class="imagem_perfil " src="/media/{{image.image}}" alt="">
+            {% else %}
+                <img class="imagem_perfil " src="{% static '../static/images/perfil.avif' %}" alt="">
+            {% endif %}
+            <br>
+            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#editarFotoPerfil">
+                Alterar foto de perfil
+            </button>
+        </div>
+        <div class="direita col-sm-6">
+            <label class="disabled">Nome Completo: </label>
+            <p>{{request.user.first_name}} </p>
+            <label>Nome de usuário: </label>
+            <p>{{request.user.username}} </p>
+
+            <button type="button" class="btn btn-primary pb-20" data-toggle="modal" data-target="#editarPerfil">
+                Editar Informações do Perfil
+            </button>
+            
+            <br>
+            <label class="mt-20">Email: </label>
+            <p>{{request.user.email}} </p> 
+            <a href="{% url 'account_change_password'%}" >Alterar senha</a>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% if request.user.is_superuser %}
+{% endif %}
+
+
+
+
+
+
+
+<!-- Modal Editar Perfil -->
+<div class="modal fade" id="editarPerfil" tabindex="-1" role="dialog" aria-labelledby="editarPerfilLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editarPerfil">Alterar Username e/ou Nome Completo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username: </label>
+                    {{form.username}} </br>
+                    <label for="username">Nome completo: </label>
+                    {{form.first_name}}
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary" >Salvar</button>
+                </div>
+            </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Modal editar Foto Perfil -->
+
+<div class="modal fade" id="editarFotoPerfil" tabindex="-1" role="dialog" aria-labelledby="editarFotoPerfilLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editarFotoPerfilLabel">Alterar Imagem de perfil</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+              <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-group">
+                      <label for="username">Selecione: </label>
+                      {{image_form.image}} </br>
+                  </div>
+  
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                      <button type="submit" class="btn btn-primary" >Salvar</button>
+                  </div>
+              </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+{%endblock%}
+
